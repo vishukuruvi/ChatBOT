@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -126,6 +127,7 @@
         .dot:nth-child(1) { animation-delay: -0.32s; }
         .dot:nth-child(2) { animation-delay: -0.16s; }
         .dot:nth-child(3) { animation-delay: 0; }
+
         @keyframes bounce {
             0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
             50% { transform: scale(1); opacity: 1; }
@@ -173,6 +175,7 @@
             font-size: 16px;
             cursor: pointer;
         }
+
 	#oo{border:none;border-bottom: 3px solid black;outline:none;}
 	#oop{border:none;cursor:pointer;font-size:15px;}
 	#email{border:none;outline:none;}
@@ -207,6 +210,7 @@
             right: -2px;
             animation: blink 2s infinite;
         }
+
         @keyframes blink {
             0% {
                 opacity: 1;
@@ -285,6 +289,7 @@
     <!-- Form 3 content here -->
   </div>
     </div>
+
     <div class="chat-container">
         <h2>Chatbot</h2>
         <div class="chat-box" id="chat-box">
@@ -504,22 +509,22 @@ async function sendMessage() {
             }
         }
 
-        function showSearchHistory() {
+function showSearchHistory() {
             const historyList = document.getElementById("history-list");
             historyList.innerHTML = "";
             let searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 
-            searchHistory.forEach((search, index) => {
+searchHistory.forEach((search, index) => {
                 const listItem = document.createElement("li");
                 listItem.textContent = search;
                 listItem.style.cursor = "pointer";
 
-                listItem.addEventListener("click", function () {
+listItem.addEventListener("click", function () {
                     document.getElementById('user-input').value = search;
                     sendMessage();
                 });
 
-                const deleteButton = document.createElement("button");
+const deleteButton = document.createElement("button");
                 deleteButton.textContent = "🗙";
                 deleteButton.classList.add("delete-btn");
                 deleteButton.onclick = function (event) {
@@ -529,7 +534,7 @@ async function sendMessage() {
                     showSearchHistory();
                 };
 
-                listItem.appendChild(deleteButton);
+listItem.appendChild(deleteButton);
                 historyList.appendChild(listItem);
             });
         }
@@ -538,66 +543,73 @@ function openNav() {
         }
 
         // Close the side navigation
-        function closeNav() {
+function closeNav() {
             document.getElementById("history").style.width = "0";
         }
-document.getElementById('email').addEventListener('click', function() {
-  showForm('eml');
-  this.textContent = 'Close';
-});
+document.getElementById('email').addEventListener('click', function(event) {
+            event.preventDefault();
+            toggleForm('eml', 'email', 'Email');
+        });
 
-document.getElementById('sms').addEventListener('click', function() {
-  showForm('sm');
-  this.textContent = 'Close';
-});
+document.getElementById('sms').addEventListener('click', function(event) {
+            event.preventDefault();
+            toggleForm('sm', 'sms', 'SMS');
+        });
 
-document.getElementById('otp').addEventListener('click', function() {
-  showForm('ot');
-  this.textContent = 'Close';
-});
+document.getElementById('otp').addEventListener('click', function(event) {
+            event.preventDefault();
+            toggleForm('ot', 'otp', 'OTP');
+        });
 
-function showForm(formId) {
-  const selectedForm = document.getElementById(formId);
+function toggleForm(formId, linkId, originalText) {
+            const selectedForm = document.getElementById(formId);
+            const link = document.getElementById(linkId);
 
-  if (!selectedForm) return;
+ if (!selectedForm) return;
 
-  // Check if the form is already visible
-  const isVisible = selectedForm.style.display === 'block';
+            // Check if the form is already visible
+const isVisible = selectedForm.style.display === 'block';
 
-  // Hide all forms
-  document.querySelectorAll('.form').forEach(form => {
-    form.style.display = 'none';
-  });
+            // Hide all forms
+document.querySelectorAll('.form').forEach(form => {
+                form.style.display = 'none';
+            });
 
-  // Toggle visibility
-  selectedForm.style.display = isVisible ? 'none' : 'block';
-}
+            // Reset all links to original text
+document.getElementById('email').innerText = "Email";
+            document.getElementById('sms').innerText = "SMS";
+            document.getElementById('otp').innerText = "OTP";
+            // Toggle visibility of the selected form
+            if (!isVisible) {
+                selectedForm.style.display = 'block';
+                link.innerText = "Close";
+            }
+        }
 
-            function sendSMS() {
+ function sendSMS() {
             const phone = document.getElementById("phone").value;
             const message = document.getElementById("messagesms").value;
-
             if (!phone || !message) {
                 alert("Please enter a phone number and message.");
                 return;
             }
 
             // Twilio API Details
-            const accountSid = "AC73df8443639ceebc7522ea53e25b150b"; // Replace with your Twilio SID
+const accountSid = "AC73df8443639ceebc7522ea53e25b150b"; // Replace with your Twilio SID
             const authToken = "205e59d672c3afbffd7fa7c44b5bf183";   // Replace with your Twilio Auth Token
             const twilioNumber = "+18315083122";     // Twilio phone number
 
             // Twilio API URL
-            const url = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`;
+const url = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`;
 
             // Data to Send
-            const data = new URLSearchParams();
+const data = new URLSearchParams();
             data.append("To", phone);
             data.append("From", twilioNumber);
             data.append("Body", message);
 
             // Fetch API to send SMS
-            fetch(url, {
+fetch(url, {
                 method: "POST",
                 headers: {
                     "Authorization": "Basic " + btoa(accountSid + ":" + authToken),
@@ -665,14 +677,14 @@ function resetTimer() {
 document.getElementById("otpDisplay").textContent = otp;
 startTimer();
 
-        function sendMail() {
+function sendMail() {
             let params = {
                 email: document.getElementById("email").value,
                 subject: document.getElementById("subject").value,
                 message: document.getElementById("message").value
             };
 
-            emailjs.send("service_b27jf7s", "template_x8q13nb", params)
+ emailjs.send("service_b27jf7s", "template_x8q13nb", params)
                 .then(function(response) {
                     alert("Email Sent Successfully!");
                     console.log(response);
@@ -684,6 +696,6 @@ startTimer();
         }
         emailjs.init("UQdOZ2RCsxdSixeg0");
 </script>
-</script>
+    </script>
 </body>
 </html>
