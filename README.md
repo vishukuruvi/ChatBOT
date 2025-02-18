@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -127,7 +126,6 @@
         .dot:nth-child(1) { animation-delay: -0.32s; }
         .dot:nth-child(2) { animation-delay: -0.16s; }
         .dot:nth-child(3) { animation-delay: 0; }
-
         @keyframes bounce {
             0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
             50% { transform: scale(1); opacity: 1; }
@@ -175,7 +173,6 @@
             font-size: 16px;
             cursor: pointer;
         }
-
 	#oo{border:none;border-bottom: 3px solid black;outline:none;}
 	#oop{border:none;cursor:pointer;font-size:15px;}
 	#email{border:none;outline:none;}
@@ -210,7 +207,6 @@
             right: -2px;
             animation: blink 2s infinite;
         }
-
         @keyframes blink {
             0% {
                 opacity: 1;
@@ -289,7 +285,6 @@
     <!-- Form 3 content here -->
   </div>
     </div>
-
     <div class="chat-container">
         <h2>Chatbot</h2>
         <div class="chat-box" id="chat-box">
@@ -314,7 +309,7 @@
 </div>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>
+<script>
         function toggleChat() {
             let chatContainer = document.getElementById("chat-container");
             chatContainer.style.display = (chatContainer.style.display === "none" || chatContainer.style.display === "") ? "block" : "none";
@@ -689,6 +684,6 @@ startTimer();
         }
         emailjs.init("UQdOZ2RCsxdSixeg0");
 </script>
-    </script>
+</script>
 </body>
 </html>
