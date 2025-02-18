@@ -239,6 +239,26 @@
         <a href="#" id="sms">SMS</a>
         <a href="#" id="otp">OTP</a>
         <a href="#">Contact</a>
+</div>
+<div class="chat-container">
+        <h2>Chatbot</h2>
+        <div class="chat-box" id="chat-box">
+            <div class="bot-message">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+		<center>Hello! How can I assist you today?</center>
+            </div>
+        </div>
+        <input type="text" autofocus id="user-input" class="user-input" placeholder="Type a message...">
+    </div>
+	<button id="bot" onclick="fun()">BOT</button>
+	<p id="wee"></p>
+<div id="history">
+<a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+<center>
+	<h2>Search History</h2>
+        <ul id="history-list"></ul>
+</center>
+</div>
 <div id="container">
   <!-- Form 1 -->
   <div id="eml" class="form">
@@ -284,28 +304,6 @@
 </center>
     <!-- Form 3 content here -->
   </div>
-    </div>
-
-    <div class="chat-container">
-        <h2>Chatbot</h2>
-        <div class="chat-box" id="chat-box">
-            <div class="bot-message">
-                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-		<center>Hello! How can I assist you today?</center>
-            </div>
-        </div>
-        <input type="text" autofocus id="user-input" class="user-input" placeholder="Type a message...">
-    </div>
-	<button id="bot" onclick="fun()">BOT</button>
-	<p id="wee"></p>
-<div id="history">
-<a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
-<center>
-	<h2>Search History</h2>
-        <ul id="history-list"></ul>
-</center>
-</div>
-
 </div>
 </div>
 
