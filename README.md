@@ -126,8 +126,7 @@
         .dot:nth-child(1) { animation-delay: -0.32s; }
         .dot:nth-child(2) { animation-delay: -0.16s; }
         .dot:nth-child(3) { animation-delay: 0; }
-
-        @keyframes bounce {
+@keyframes bounce {
             0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
             50% { transform: scale(1); opacity: 1; }
         }
@@ -174,8 +173,7 @@
             font-size: 16px;
             cursor: pointer;
         }
-
-	#oo{border:none;border-bottom: 3px solid black;outline:none;}
+#oo{border:none;border-bottom: 3px solid black;outline:none;}
 	#oop{border:none;cursor:pointer;font-size:15px;}
 	#email{border:none;outline:none;}
 	#subject{border:none;outline:none;border-bottom: 3px solid black;}
@@ -209,8 +207,7 @@
             right: -2px;
             animation: blink 2s infinite;
         }
-
-        @keyframes blink {
+@keyframes blink {
             0% {
                 opacity: 1;
             }
